@@ -38,7 +38,7 @@ mutation {
 
 apollographql.com/docs/apollo-server/schema/schema/#input-types
 
-// TenderInput Mutation response 
+
 
 
 {
