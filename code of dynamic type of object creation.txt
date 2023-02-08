@@ -1,0 +1,41 @@
+public class GraphQlManageClosingOfferTenderStatus{
+    
+    public static void updateStatus(Map<Id,GraphQLResponse> response){
+        String objectName = '';
+        List<Sobject> objectsToUpdate = new List<Sobject>(); 
+        for(Id ids : response.keyset()){
+            objectName =  ids.getSObjectType().getDescribe().getName();
+            sObject obj =  Schema.getGlobalDescribe().get(objectName).newSObject();
+            GraphQLResponse res =  response.get(ids);
+            
+            obj.put('id',ids);
+            obj.put('IsProcessed__c',true);
+            obj.put('ProcessedDate__c',System.now());
+            
+            if(res.hasErrors()) {
+                List<GraphQLResponseError> errors =  res.getErrors();
+                for(GraphQLResponseError err : errors) {
+                    obj.put('ErrorMessage__c' ,err.message);
+                }
+                obj.put('IsError__c',true); 
+            }
+            objectsToUpdate.add(obj);
+        }
+        
+        if (!objectsToUpdate.isEmpty()) {
+            // System.debug(objectsToUpdate);
+            Database.SaveResult[] results = Database.update(objectsToUpdate);
+            for (Database.SaveResult result : results) {
+                if (result.isSuccess()) {
+                    System.debug('Successfully Updated with id: ' + result.getId());
+                }
+                else {
+                    for(Database.Error error : result.getErrors()) {
+                        System.debug(error.getStatusCode() + ': ' + error.getMessage() +
+                                     ' Fields that affected the error: ' + error.getFields());
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,156 @@
+{
+    "data": {
+        "createTenderForOpportunity": {
+            "opportunityId": "0069K0000023oiI",
+            "offer": {
+                "paymentPurpose": "OCXNMU",
+                "offerDate": 1674106552977,
+                "vat": 0.19,
+                "booked": false,
+                "hasNotifiedAccountManager": false,
+                "expiryDate": 1674024404.021,
+                "salutation": null,
+                "customer": "Chinese Princess",
+                "customerEmail": "chinese.princess@email.com",
+                "customerPhone": null,
+                "documentsUploaded": false,
+                "comment": null,
+                "customerType": "Architekt",
+                "products": [],
+                "serviceGroups": [
+                    {
+                        "name": "Service Group",
+                        "description": "SG Description",
+                        "payment": {
+                            "type": 1,
+                            "prePercentage": 10.5
+                        },
+                        "products": [
+                            "01t1t000001ii3zAAA"
+                        ],
+                        "price": 0
+                    }
+                ],
+                "street": "Chinese Princess",
+                "houseNumber": "12345",
+                "zip": "67659",
+                "country": "Deutschland",
+                "city": "Chinese Princess",
+                "project": "Chinese Princess",
+                "projectLabel": "Neubau",
+                "billingStreet": "Strasse 587",
+                "billingZip": "10115",
+                "billingCity": "Berlin",
+                "billingCountry": null,
+                "billingName": "Red Aunts",
+                "pipedriveDealId": "0069K0000023oiI",
+                "valueNet": 0,
+                "accountManager": {},
+                "discount": null,
+                "contractPartner": {},
+                "notifications": {
+                    "open": false
+                },
+                "isDraft": false,
+                "status": 0,
+                "offerText": "Custom tender",
+                "contractPartnerId": null,
+                "downPayment": {
+                    "percentage": 30,
+                    "amount": 0
+                }
+            },
+            "customer": {
+                "accountId": "0019K000000EwddQAC",
+                "name": "Chinese Princess",
+                "email": "chinese.princess@email.com",
+                "phone": null,
+                "mobilePhone": null,
+                "comment": null,
+                "hasFinishedDocumentUpload": false
+            },
+            "project": {
+                "additionalDetails": {
+                    "plannedTypeOfProperty": null,
+                    "plannedConstructionType": null,
+                    "plannedLivingArea": null,
+                    "plannedNumberOfFlats": null,
+                    "plannedUseOfBuilding": null,
+                    "plannedTypeOfGarage": null,
+                    "plannedTypeOfBalcony": null,
+                    "plannedBalconyOrientation": null,
+                    "plannedNumberOfFloors": null,
+                    "plannedNumberOfWinDooBalGar": null,
+                    "plannedTypeOfHeatingSystem": null,
+                    "plannedTypeOfSolarCollector": null,
+                    "plannedTypeOfWindows": null,
+                    "plannedTypeOfDoors": null,
+                    "plannedTypeOfDeck": null,
+                    "plannedTypeOfReconstruction": null,
+                    "plannedLocationAroundHouse": null,
+                    "plannedNumberOfResidents": null,
+                    "plannedTypeOfOutlineTypology": null,
+                    "plannedLocationOfConstructionSite": null,
+                    "plannedSlopeOfProperty": null,
+                    "plannedBorderDevelopment": false,
+                    "plannedConstructionMeasures": false,
+                    "plannedUsageOfGardenHouse": null,
+                    "plannedDoorMaterial": null,
+                    "plannedFloorForBalcony": null,
+                    "plannedLocationSolarCollector": null,
+                    "plannedTypeOfDetachedHouse": null,
+                    "existingTypeOfProperty": null,
+                    "existingUseOfBuilding": null,
+                    "existingTypeOfGarage": null,
+                    "existingNumberOfFloors": null,
+                    "existingBorderDevelopment": false,
+                    "monumentProtection": false,
+                    "customerPriorityBuilding": null,
+                    "geotechnicalReport": false,
+                    "digitalConstructionPlans": false,
+                    "preliminaryBuildingApplilcation": false,
+                    "constructionDateOfProperty": null,
+                    "desiredSaleOfProperty": false,
+                    "neighbourOwnsConservatory": false,
+                    "thicknessOfWallCentimeters": null,
+                    "lengthOfBreachMeters": null,
+                    "asBuiltDocumentsAvailable": false,
+                    "numberOfWallsBreach": null
+                },
+                "label": "Neubau",
+                "description": "Chinese Princess",
+                "descriptionInternal": null,
+                "totalPrice": 7428.57,
+                "plannedTime": "Chinese Princess",
+                "address": {
+                    "houseNumber": "12345",
+                    "street": "Chinese Princess",
+                    "zip": "67659",
+                    "city": "Chinese Princess",
+                    "country": "Deutschland"
+                },
+                "additionalInfo": "",
+                "lat": 49.46774389999999,
+                "long": 7.7446913
+            },
+            "products": [],
+            "dueDate": 1674024387.395,
+            "partnerRadius": 1000,
+            "partnerProfession": "Builder",
+            "isDraft": true,
+            "maxPartners": 5,
+            "preselectedApplicants": [
+                {
+                    "uid": "partner001",
+                    "productCategories": [
+                        "Builder"
+                    ]
+                }
+            ],
+            "appliedPartnersCount": 0,
+            "status": 1,
+            "uid": "aqpcUkDRwkDWlIdPggyo",
+            "createdAt": 1674106553243
+        }
+    }
+}

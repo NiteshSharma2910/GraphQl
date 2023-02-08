@@ -1,0 +1,122 @@
+public class TenderService {
+
+    /* public static void CloseTender(List<ClosingTender__c> closingTenders) {
+
+    }*/
+
+    public static GraphQLResponse CreateTenderForOpportunity() {
+
+        Tender_GraphQL_Config__c tenderConfig = Tender_GraphQL_Config__c.getInstance();
+        
+        DownPayment dp =  new DownPayment();
+        dp.percentage =  Integer.valueOf(tenderConfig.Down_Payment_Percentage__c);
+        
+        Products products =  new Products();
+        products.id = '01t1t000001ii3zAAA';
+        products.category = 'Abnahme';
+        products.description = 'Abnahme';
+        products.uid = 'Abnahme01';
+        
+        Payment payment =  new Payment();
+        payment.type = Integer.valueOf(tenderConfig.Payment_Type__c);
+        payment.prePercentage =  Integer.valueOf(tenderConfig.Payment_PrePercentage__c);
+
+        serviceGroups serviceGroups =  new serviceGroups();
+        serviceGroups.name = 'Service Group';
+        serviceGroups.description ='SG Description';
+        serviceGroups.products =  new List<String>{'01t1t000001ii3zAAA'};
+        serviceGroups.payment =  payment;
+
+        Applicants applicant =  new Applicants();
+        applicant.productCategories =  'Builder';
+        applicant.uid =  'partner001';
+
+        Details details  =  new Details();
+        details.downpayment = dp;
+        details.products =  products;
+        details.serviceGroups  =  serviceGroups;
+        details.contractPartnerId =  null;
+        details.offerText = tenderConfig.Offer_Text__c;
+        DateTime dueDate = Date.today().addDays(Integer.valueOf(tenderConfig.Due_In_days__c));
+        details.dueDate = dueDate.getTime()/1000 ;
+        details.isDraft = tenderConfig.Is_Draft__c;
+        DateTime expiryDate = Date.today().addDays(Integer.valueOf(tenderConfig.Expiry_In_Days__c));
+        details.offerExpiryDate = expiryDate.getTime()/1000;
+        details.partnerRadius =   Integer.valueOf(tenderConfig.Partner_Radius__c);
+        details.partnerProfession = 'Builder';
+        details.maxPartners=  Integer.valueOf(tenderConfig.Max_Partners__c);
+      //detail.listApplicant =  new List<Applicants>{applicant};
+
+        createTenderForOpportunity Opplist = new createTenderForOpportunity();
+        Opplist.opportunityId =  '0069K0000023oiIQAQ';
+        Opplist.details =  details;
+        
+        GraphQLNode tenderCreateNode = new GraphQLNode('createTenderForOpportunity')
+        .withArgument('opportunityId', Opplist.opportunityId)
+        .withArgument('details', Opplist.details)
+        .add(new GraphQLNode('details')
+            .add(new Object[]{'contractPartnerId','offerText', new GraphqlNode('serviceGroups')
+            .add(new Object[]{'name','description',new GraphQLNode('payment').add(new Object[]{'type','prePercentage'})}),new GraphqlNode('products').add(new Object[]{'id','category','description','uid'}), new GraphqlNode[]{new GraphQLNode('applicants').add(new Object[]{'uid','productCategories'})},
+            'dueDate','isDraft','offerExpiryDate','partnerRadius','partnerProfession', 'maxPartners',new GraphqlNode('downPayment').add(new Object[]{'percentage'})}
+            
+        ));
+    
+        GraphQLQuery qry = new GraphQLQuery(tenderCreateNode, Opplist);
+        String oppVar = JSON.serialize(qry);        
+        GraphQLMutationNode tenderCreationMutation = new GraphQLMutationNode('createTenderForOpportunity', tenderCreateNode);
+        GraphQLRequest request =  tenderCreationMutation.buildRequest().withHeader('Authorization', 'Bearer ' + GraphQlAuthentication.getAuthToken());
+
+        IGraphQLClient client = new GraphQLHttpClient(GraphQlApiConfig__c.getInstance().Endpoint__c);
+        GraphQLResponse response = client.send(request);
+        return response;
+    }
+
+    public class createTenderForOpportunity {
+        public String opportunityId {get; set;}
+        public Details details {get; set;}
+    }
+    
+    public class Details {
+        public String contractPartnerId;
+        public String offerText;
+        public serviceGroups serviceGroups;
+        public Products products;
+        public List<Applicants> listApplicant;
+        public Long dueDate;
+        public Boolean isDraft;
+        public Long offerExpiryDate;
+        public Integer partnerRadius;
+        public String partnerProfession;
+        public Integer maxPartners;
+        public DownPayment downPayment;
+    }
+    
+    public class DownPayment {
+        public Integer percentage;
+    }
+    
+    public class serviceGroups {
+        public String name;
+        public String description;
+        public Payment payment;
+        public List<String> products;
+    }
+    
+    public class Payment{
+        public Integer type;
+        public Integer prePercentage;	
+    }
+
+     public class Products {
+        public String id;
+        public String category;
+        public String description;
+        public String uid;
+    }
+    
+    public class Applicants{
+        public String uid;
+        public string productCategories;
+    
+    }  
+}
